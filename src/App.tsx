@@ -1,11 +1,18 @@
-import React from 'react';
 import { Product } from './components/Product';
-import { products } from './data/products';
+import { useProducts } from './hooks/useProducts';
+
 
 function App() {
+	const { loading, error, products } = useProducts()
+
 	return (
 		<div className="container mx-auto max-w-2xl pt-5">
-			<Product product={products[0]} />
+			{loading && <p className='text-center'>Loading...</p>}
+			{error && <p className='text-center text-red-600'>{error}</p>}
+			{products.map(prod =>
+				<Product key={prod.id} product={prod} />
+			)}
+
 		</div>
 
 	);
