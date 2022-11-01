@@ -3,12 +3,14 @@ import React from "react"
 interface ModalProps {
 	children: React.ReactNode
 	title: string
+	onClose: () => void
 }
 
 
-const Modal = ({ children, title }: ModalProps) => {
+const Modal = ({ children, title, onClose }: ModalProps) => {
 	return (<>
 		<div
+			onClick={onClose}
 			className="fixed bg-black/50 top-0 right-0 left-0 bottom-0"
 		/>
 		<div
