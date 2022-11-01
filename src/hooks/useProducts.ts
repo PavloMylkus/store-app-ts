@@ -9,6 +9,9 @@ export function useProducts() {
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState('');
 
+	function addProduct(product: IProducts) {
+		setProducts(prev => [...prev, product])
+	}
 
 	async function fetchProducts() {
 		try {
@@ -28,5 +31,5 @@ export function useProducts() {
 		fetchProducts()
 	}, [])
 
-	return { products, error, loading }
+	return { products, error, loading, addProduct }
 }
